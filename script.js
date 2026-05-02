@@ -8,8 +8,9 @@ async function getWeather() {
     const response = await fetch(url);
     const data = await response.json();
 
-    if (data.cod !== 200) {
-      document.getElementById("weatherResult").innerHTML = "Location not found!";
+   if (data.cod === "404") {
+      alert("City not found! Example: Patna, Delhi");
+    }
       return;
     }
 
@@ -27,9 +28,6 @@ async function getWeather() {
     `;
   } catch (error) {
     document.getElementById("weatherResult").innerHTML = "Error fetching data!";
-{if (data.cod === "404") {
-  alert("City not found! Please enter a valid city like Patna");
-}
 }
 
   }
