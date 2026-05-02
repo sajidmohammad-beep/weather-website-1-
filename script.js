@@ -1,32 +1,38 @@
-async function getWeather() {
-  const location = document.getElementById("locationInput").value;
-  const apiKey = "584a59617964db8040f92546d178f233"; // Replace with your API key
+const apiKey = "584a59617964db8040f92546d178f233"; // apni API key yaha daal
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+const input = document.querySelector("input");
+const button = document.querySelector("button");
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+// elements jaha data show hoga
+const cityName = document.querySelector(".city");
+const temp = document.querySelector(".temp");
+const desc = document.querySelector(".description");
+const humidity = document.querySelector(".humidity");
+const wind = document.querySelector(".wind");
 
-   if (data.cod !== "200") {
-document.getElementById("weatherResult" ).innerHTML = "City not found! Example: Patna, Delhi";
+button.addEventListener("click", () => {
+  let city = input.value;
 
-      return;
-    }
-
-    const temp = data.main.temp;
-   const weather = data.weather[0].description;
-    const icon = data.weather[0].icon;
-
-    const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-    document.getElementById("weatherResult").innerHTML = `
-      <h2>${data.name}</h2>
-      <p>${weather}</p>
-      <h3>${temp}°C</h3>
-      <img src="${iconUrl}" alt="weather icon">
-    `;
-  } 
-
+  // Bihar fix
+  if (city.toLowerCase() === "bihar") {
+    city = "Patna";
   }
-}
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+    .then(res => res.json())
+    .then(data => {
+
+      // ❌ error handle
+      if (data.cod === "404") {
+        alert("City not found! Example: Patna, Delhi");
+        return;
+      }
+
+      // ✅ data show
+      cityName.innerText = data.name;
+      temp.innerText = data.main.temp + "°C";
+      desc.innerText = data.weather[0].description;
+      humidity.innerText = "Humidity: " + data.main.humidity + "%";
+      wind.innerText = "Wind: " + data.wind.speed + " km/h";
+    });
+});
