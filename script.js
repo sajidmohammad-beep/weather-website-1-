@@ -10,7 +10,7 @@ async function getWeather() {
 
    if (data.cod === "404") {
       alert("City not found! Example: Patna, Delhi");
-    }
+
       return;
     }
 
