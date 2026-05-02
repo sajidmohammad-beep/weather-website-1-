@@ -8,8 +8,8 @@ async function getWeather() {
     const response = await fetch(url);
     const data = await response.json();
 
-   if (data.cod === "404") {
-      alert("City not found! Example: Patna, Delhi");
+   if (data.cod !== 200) {
+document.getElementById("weatherResult" ).innerHTML = "City not found! Example: Patna, Delhi";
 
       return;
     }
