@@ -8,14 +8,14 @@ async function getWeather() {
     const response = await fetch(url);
     const data = await response.json();
 
-   if (data.cod !== 200) {
+   if (data.cod !== "200") {
 document.getElementById("weatherResult" ).innerHTML = "City not found! Example: Patna, Delhi";
 
       return;
     }
 
     const temp = data.main.temp;
-    const weather = data.weather[0].description;
+   const weather = data.weather[0].description;
     const icon = data.weather[0].icon;
 
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
