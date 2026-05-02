@@ -2,21 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather Palace Finder</title>
+  <title>Weather App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-<div class="watermark">MAXX</div>
-    <h1>🌤️City Name🌤️</h1>
-    
-    <input type="text" placeholder="Enter city (e.g. Patna, Delhi, Mumbai)">
-    <button onclick="getWeather()">Check Weather</button>
+<div class="container">
+  
+  <h1>🌦 Weather App</h1>
 
-    <div id="weatherResult" class="weather-box"></div>
+  <div class="search-box">
+    <input type="text" placeholder="Enter city (e.g. Patna, Delhi)">
+    <button>Search</button>
   </div>
 
-  <script src="script.js"></script>
+  <div class="weather-box">
+    <h2 class="city"></h2>
+    <h1 class="temp"></h1>
+    <p class="description"></p>
+    <p class="humidity"></p>
+    <p class="wind"></p>
+  </div>
+
+  <div class="watermark">MAXX Y</div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
