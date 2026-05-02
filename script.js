@@ -26,9 +26,7 @@ async function getWeather() {
       <h3>${temp}°C</h3>
       <img src="${iconUrl}" alt="weather icon">
     `;
-  } catch (error) {
-    document.getElementById("weatherResult").innerHTML = "Error fetching data!";
-}
+  } 
 
   }
 }
