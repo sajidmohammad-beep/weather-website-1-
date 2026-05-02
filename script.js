@@ -27,5 +27,10 @@ async function getWeather() {
     `;
   } catch (error) {
     document.getElementById("weatherResult").innerHTML = "Error fetching data!";
+{if (data.cod === "404") {
+  alert("City not found! Please enter a valid city like Patna");
+}
+}
+
   }
 }
