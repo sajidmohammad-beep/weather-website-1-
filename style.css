@@ -45,11 +45,13 @@ button:hover {
 .weather-box img {
   width: 80px;
 }
+.container {
+  position: relative;
+}
+
 .watermark {
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   right: 10px;
   opacity: 0.5;
-  font-size: 14px;
-  color: white;
 }
